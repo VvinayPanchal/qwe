@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration</title>
+    <link rel="shortcut icon" href="../../css/img/old logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            width: 100vw;
+            font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* -------------------------------------------header------------------------------------------- */
+        header {
+            position: sticky;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3vh 0px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.316);
+            z-index: 1;
+            background-color: white;
+            opacity: 0.98;
+        }
+
+        #logo {
+            font-size: 1rem;
+            margin-left: 10vw;
+            transition: color 0.4s ease-in-out;
+            color: black;
+        }
+
+        .second {
+            color: #FCAE1E;
+        }
+
+        #logo span {
+            color: #FCAE1E;
+        }
+
+        nav {
+            display: flex;
+            margin-right: 10vw;
+        }
+
+        nav li {
+            margin: 0px 20px;
+            list-style: none;
+        }
+
+        nav li a {
+            color: black;
+            font-size: 100%;
+            text-decoration: none;
+            transition: color 0.4s ease-in-out;
+        }
+
+        .dropbtn {
+            color: white;
+            padding: 4px;
+            background: linear-gradient(180deg, #FCBE1E 0%, rgba(252, 123, 30, 0.80) 100%);
+            font-size: 16px;
+            border: none;
+        }
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            margin-left: -70px;
+            min-width: 260px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            font-weight: 600;
+            padding: 12px 16px;
+            background: linear-gradient(180deg, #FCBE1E 0%, rgba(252, 123, 30, 0.80) 100%);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #b5b5b5;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Navbar Responsive */
+
+        #check {
+            display: none;
+        }
+
+        .mobile-navbar-btn {
+            display: none;
+            background: transparent;
+            cursor: pointer;
+            margin-right: 5%;
+        }
+
+        .menu_bar {
+            margin-top: 2vh;
+            width: 1.7vmax;
+        }
+
+        .close_bar {
+            display: none;
+            margin-top: 2vh;
+            width: 1.7vmax;
+        }
+
+        @media(max-width: 1300px) {
+
+            /* html {
+            overflow-x: hidden;
+        } */
+
+            /* body{
+            overflow-x: hidden;
+        } */
+
+            nav {
+                width: 100%;
+                height: 0;
+                background-color: rgb(0, 0, 0, 0.8);
+                backdrop-filter: blur(7px);
+                box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 0.1);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                transition: all .3s ease;
+            }
+
+            header nav li a {
+                color: white;
+            }
+
+            #check:checked~nav {
+                height: 300%;
+            }
+
+            nav .navbar-link {
+                font-size: 3vmin;
+                transform: translateY(-50px);
+            }
+
+            .nav_list {
+                flex-direction: column;
+                text-align: center;
+                margin-left: 10vw;
+                gap: 9rem;
+            }
+
+            #check:checked~.mobile-navbar-btn .menu_bar {
+                display: none;
+            }
+
+            #check:checked~.mobile-navbar-btn .close_bar {
+                display: block;
+            }
+
+            .mobile-navbar-btn {
+                display: block;
+                margin-top: -1.5vh;
+            }
+        }
+
+        /* --------------------------------------Sub Services-------------------------------------- */
+
+        #servies {
+            width: 80%;
+            margin: 0px auto;
+            border-radius: 15px;
+            box-shadow: 0px 5px 45px rgba(0, 0, 0, 0.084);
+        }
+
+        .main_service {
+            display: flex;
+            width: 90%;
+            margin: 3% auto;
+            padding-top: 3%;
+            text-align: center;
+        }
+
+        .Enquire_btn {
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            border: 0px;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(180deg, #FCBE1E 0%, rgba(252, 123, 30, 0.80) 100%);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .Enquire_btn:hover {
+            transform: translateY(1px);
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        hr {
+            width: 80%;
+            margin: 5% auto;
+        }
+
+        .service_detail {
+            font-size: 1.3rem;
+            margin-left: 10%;
+        }
+
+        .all_services {
+            /* display: flex; */
+            width: 93%;
+            margin: 0 auto;
+            /* flex-wrap: wrap; */
+            /* text-align: center; */
+        }
+
+        .all_services h2 {
+            margin: 10px;
+        }
+
+        .all_services p {
+            margin: 5px;
+        }
+
+        /* ---------------------------------Fotter--------------------------------- */
+
+        footer {
+            margin-top: 3%;
+            display: flex;
+            width: 100%;
+            height: 70vh;
+            background-color: black;
+            color: white;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .socail {
+            margin-left: 5%;
+        }
+
+        .socail h3 {
+            font-size: 1.6rem;
+            margin: 15px 0px;
+        }
+
+        footer .detail .box {
+            display: flex;
+            align-items: center;
+            margin: 15px 0px;
+        }
+
+        footer .detail .box img {
+            width: 7%;
+        }
+
+        footer .detail .box p {
+            margin-left: 10px;
+        }
+
+        .socail_media {
+            display: flex;
+        }
+
+        .socail_media .img {
+            padding: 5px 0px;
+            margin: 0px 15px;
+            background-color: #141414;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        .socail_media a img {
+            width: 70%;
+            align-items: center;
+        }
+
+        .map {
+            width: 50%;
+            height: 80%;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-right: 5%;
+        }
+
+        .mapIn {
+            width: 100%;
+            height: 100%
+        }
+
+        @media(max-width: 1100px) {
+            .main_service {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .service_detail {
+                margin-left: 0%;
+            }
+
+            .map {
+                width: 45%;
+                height: 65%
+            }
+        }
+
+        @media(max-width: 700px) {
+            .main_service img {
+                width: 70%;
+            }
+
+            .service_detail h1 {
+                font-size: 5vw;
+            }
+
+            .service_detail p {
+                font-size: 3vw;
+            }
+
+            .socail h3 {
+                font-size: 4vw;
+            }
+
+            footer .detail .box p {
+                font-size: 2vw;
+            }
+        }
+
+        @media(max-width: 500px) {
+            #logo {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--------------------------------------------- header --------------------------------------------->
+    <header>
+        <a href="/index.html" style="text-decoration: none;">
+            <p id="logo">Krishna-<span>RTO</span> <br>& <span>Insurance</span></p>
+        </a>
+        <input id="check" type="checkbox">
+        <label class="mobile-navbar-btn" for="check">
+            <svg class="menu_bar" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">! Font Awesome
+                Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license
+                (Commercial License) Copyright 2023 Fonticons, Inc.<style>
+                    svg {
+                        fill: rgb(251, 87, 17)
+                    }
+                </style>
+                <path
+                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+            </svg>
+            <svg class="close_bar" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">! Font Awesome
+                Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license
+                (Commercial License) Copyright 2023 Fonticons, Inc.<style>
+                    svg {
+                        fill: rgb(251, 87, 17)
+                    }
+                </style>
+                <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
+            </svg>
+        </label>
+        <nav>
+            <li><a href="../../index.html">Home</a></li>
+            <div class="dropdown">
+                <li><a class="second" href="../../index.html#Service">Service</a></li>
+                <div class="dropdown-content">
+                    <a href="/Vehicle_Registration.html">RC Related Services</a>
+                    <a href="/Driving_License_Services.html">Driving License Related Services</a>
+                    <a href="/Insurance.html">Insurance Related Services</a>
+                    <a href="/Permits_and_Authorization.html">Permits and Authorization <br>Related Services</a>
+                    <a href="/Vehicle_Fitness.html">Vehicle Fitness Related Services</a>
+                    <a href="/TAX.html">TAX Related Services</a>
+                    <a href="/Challan_Services.html">Challan Payment Related <br>Services</a>
+                    <a href="/RTO_Related_Forms.html">Other Services</a>
+                    <a href="/RTO_Related_Forms.html">RTO Related Forms</a>
+                </div>
+            </div>
+            <li><a href="../../index.html#contact_us">Contact us</a></li>
+            <li><a href="../../index.html#About_us">About us</a></li>
+            <div class="dropdown">
+                <button class="dropbtn">Govt. Link <span></span></button>
+                <div class="dropdown-content">
+                    <a href="https://parivahan.gov.in/parivahan/hi">MP Parivahan</a>
+                    <a href="https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do">Sarathi Parivahan</a>
+                    <a href="https://checkpost.parivahan.gov.in/checkpost/faces/login.xhtml?faces-redirect=true/#">Check
+                        Post</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--------------------------------------------- services --------------------------------------------->
+    <section id="servies">
+        <div class="main_service">
+            <img src="../../css/img/Vehicle Registration 8.png" alt="">
+            <div class="service_detail">
+                <h1>Taxi to private</h1><br>
+                <p>Are you looking to convert your taxi to a private vehicle? Make the transition seamless with Krishna-RTO. We specialize in providing hassle-free services for converting your Taxi Registration Certificate (RC) to a private one.
+                </p><br>
+                <a href="/index.html#contact_us"><button class="Enquire_btn">Enquire Now</button></a>
+            </div>
+        </div>
+        <hr>
+
+        <!----------------- Sub Services ----------------->
+        <div class="all_services">
+            <h2>Eligibility:</h2>
+            <p>You must be the registered owner of the vehicle in all over India.</p>
+            <p>The vehicle must meet all safety and emission standards for private vehicles.</p>
+            <p>No outstanding challans or traffic fines associated with the vehicle.</p>
+            <h2>Required Documents:</h2>
+
+            <p>1. Aadhar card and PAN card photocopies of the vehicle owner</p>
+            <p>2. Two photographs of the vehicle owner</p>
+            <p>3. Original RC card</p>
+            <p>4. Photocopy of vehicle insurance</p>
+            <p>5. PUC (Pollution Under Control) photocopy</p>
+            <p>6. Original permit</p>
+            <p>7. Copy of fitness certificate</p>
+            <p>8. If the vehicle is financed, a letter from the financier</p>
+        </div><br>
+    </section>
+
+    <!--------------------------------------------- footer --------------------------------------------->
+    <footer>
+        <div class="socail">
+
+            <!----------------- They are the location, time, mobile No. and email id ----------------->
+            <h3>Contact</h3>
+            <div class="detail">
+                <div class="box">
+                    <img src="../../css/img/Location.png" alt="">
+                    <p>Dewas Naka Square, Indore, Madhya Pradesh 453771</p>
+                </div>
+                <div class="box">
+                    <img src="../../css/img/Time.png" alt="">
+                    <p>9am -8pm</p>
+                </div>
+                <div class="box">
+                    <img src="../../css/img/Call.png" alt="">
+                    <p>9926058939, 9806561071</p>
+                </div>
+                <div class="box">
+                    <img src="../../css/img/Circled Envelope.png" alt="">
+                    <p>surosekrishna417@gmail.com</p>
+                </div>
+            </div>
+
+            <!----------------- They are the Socail media account ----------------->
+            <h3>Contact</h3>
+            <div class="socail_media">
+                <div class="img"><a href="https://x.com/RtoKrishna?t=w8nYxWybgbxggGt0JMrjAQ&s=09"><img src="css/img/TwitterX.png" alt=""></a></div>
+                <div class="img"><a href="https://www.facebook.com/krishna.Rto.5?mibextid=ZbWKwL"><img src="css/img/Facebook F.png" alt=""></a></div>
+                <div class="img"><a href="https://www.instagram.com/ravi_rto_insurance_advisor?igsh=MW0yYnY3a3JkMjl4eQ=="><img src="css/img/Instagram.png" alt=""></a></div>
+            </div>
+        </div>
+
+        <!----------------- This is location or Map of Krishna RTO ----------------->
+        <p class="map"><iframe class="mapIn"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1206.443644013403!2d75.9018457!3d22.7721935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39631d1859567921%3A0x927953be6f5fe8f3!2sRTO%20AND%20INSURANCE!5e1!3m2!1sen!2sin!4v1703663615694!5m2!1sen!2sin"
+                width="700" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </footer>
+</body>
+
+</html>
